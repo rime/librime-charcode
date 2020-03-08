@@ -27,15 +27,23 @@ if(BUILD_SHARED_LIBS)
     POSITION_INDEPENDENT_CODE ON)
 endif()
 
+# Boost::locale is not visible to parent. Create an interface library to work
+# around. See https://stackoverflow.com/a/48741931
+add_library(rime-charcode-deps INTERFACE)
+target_link_libraries(rime-charcode-deps INTERFACE
+  ${Boost_LOCALE_LIBRARIES}
+  ${ICONV_LIBRARIES}
+  ${ICU_LIBRARIES}
+)
+
 set(charcode_library rime-charcode)
 set(plugin_name ${charcode_library} PARENT_SCOPE)
 set(plugin_objs $<TARGET_OBJECTS:rime-charcode-objs> PARENT_SCOPE)
 set(charcode_deps
   ${rime_library}
   ${rime_gears_library}
-  ${Boost_LIBRARIES}
-  ${ICONV_LIBRARIES}
-  ${ICU_LIBRARIES})
+  rime-charcode-deps
+)
 set(plugin_deps ${charcode_deps} PARENT_SCOPE)
 set(plugin_modules "charcode" PARENT_SCOPE)
 
