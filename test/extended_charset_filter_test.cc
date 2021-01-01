@@ -41,18 +41,18 @@ TEST(RimeExtendedCharsetFilterTest, FilterText) {
   EXPECT_FALSE(ExtendedCharsetFilter::FilterText("👋", "gb2312"));
 
   // gbk+emoji
-  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("👋", "gbk+emoji"));
-  EXPECT_FALSE(ExtendedCharsetFilter::FilterText("荣👋", "gbk+emoji"));
+  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("👋", "gbk", true));
+  EXPECT_FALSE(ExtendedCharsetFilter::FilterText("荣👋", "gbk", true));
 
   // gb2312+emoji
-  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("👋", "gb2312+emoji"));
-  EXPECT_FALSE(ExtendedCharsetFilter::FilterText("荣👋", "gb2312+emoji"));
-  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("♂️", "gb2312+emoji"));
-  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("✈️", "gb2312+emoji"));
+  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("👋", "gb2312", true));
+  EXPECT_FALSE(ExtendedCharsetFilter::FilterText("荣👋", "gb2312", true));
+  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("♂️", "gb2312", true));
+  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("✈️", "gb2312", true));
 
   // emoji joining
-  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("🙋‍♂️", "gb2312+emoji"));
-  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("🙋", "gb2312+emoji"));
+  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("🙋‍♂️", "gb2312", true));
+  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("🙋", "gb2312", true));
   // emoji 12.0
-  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("🥓", "gb2312+emoji"));
+  EXPECT_TRUE(ExtendedCharsetFilter::FilterText("🥓", "gb2312", true));
 }

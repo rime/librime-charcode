@@ -784,10 +784,13 @@ bool ExtendedCharsetFilter::FilterText(const string& text,
     boost::locale::conv::from_utf(
         text, charset, boost::locale::conv::method_type::stop);
   }
-  catch(boost::locale::conv::conversion_error const& /*ex*/) {
+  catch(boost::locale::conv::conversion_error const& ex) {
+    DLOG(INFO) << ex.what();
     return false;
   }
-  catch(...) {
+  catch(boost::locale::conv::invalid_charset_error const& ex) {
+    DLOG(ERROR) << ex.what();
+    return true;
   }
   return true;
 }
