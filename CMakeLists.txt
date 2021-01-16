@@ -1,5 +1,5 @@
 project(rime-charcode)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 
 option(BUILD_WITH_ICU "Build by explicitly linking to ICU libraries" ON)
 
