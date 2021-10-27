@@ -7,7 +7,6 @@
 
 #include "codepoint_translator.h"
 
-#include <boost/asio.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/locale.hpp>
 
