@@ -1,7 +1,7 @@
 project(rime-charcode)
 cmake_minimum_required(VERSION 3.10)
 
-option(BUILD_WITH_ICU "Build by explicitly linking to ICU libraries" ON)
+option(BUILD_WITH_ICU "Build by explicitly linking to ICU libraries" OFF)
 
 if (BUILD_WITH_ICU)
   find_package(ICU COMPONENTS uc)
