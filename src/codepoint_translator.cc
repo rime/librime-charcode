@@ -5,8 +5,6 @@
 // 2016-09-08 osfans <waxaca@163.com>
 //
 
-#include "codepoint_translator.h"
-
 #include <boost/asio.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/locale.hpp>
@@ -18,6 +16,8 @@
 #include <rime/ticket.h>
 #include <rime/translation.h>
 #include <rime/gear/translator_commons.h>
+
+#include "codepoint_translator.h"
 
 namespace rime {
 
