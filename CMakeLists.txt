@@ -21,6 +21,10 @@ endif()
 aux_source_directory(src charcode_src)
 
 add_library(rime-charcode-objs OBJECT ${charcode_src})
+# Work around min/max in boost::locale
+if(WIN32)
+  target_compile_definitions(rime-charcode-objs PRIVATE NOMINMAX)
+endif()
 if(BUILD_SHARED_LIBS)
   set_target_properties(rime-charcode-objs
     PROPERTIES
