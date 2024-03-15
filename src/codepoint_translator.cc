@@ -5,7 +5,9 @@
 // 2016-09-08 osfans <waxaca@163.com>
 //
 
-#include <boost/asio.hpp>
+#ifdef _WIN32
+#include <WinSock2.h>
+#endif
 #include <boost/algorithm/string.hpp>
 #include <boost/locale.hpp>
 
