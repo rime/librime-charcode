@@ -18,11 +18,6 @@ if(Boost_FOUND)
   link_directories(${Boost_LIBRARY_DIRS})
 endif()
 
-if(WIN32)
-  set(WS2_LIBRARY ws2_32)
-endif(WIN32)
-
-
 aux_source_directory(src charcode_src)
 
 add_library(rime-charcode-objs OBJECT ${charcode_src})
@@ -43,7 +38,6 @@ target_link_libraries(rime-charcode-deps INTERFACE
   ${Boost_LOCALE_LIBRARIES}
   ${ICONV_LIBRARIES}
   ${ICU_LIBRARIES}
-  ${WS2_LIBRARY}
 )
 
 set(charcode_library rime-charcode)
